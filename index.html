@@ -1,1 +1,1195 @@
-IPTV
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101326">
+  <meta name="description" content="IPTV Player: Smart Live TV is an easy-to-use IPTV player for M3U, M3U8 playlists, Xtream Codes, local media, and supported casting.">
+  <title>IPTV Player: Smart Live TV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0d1a;
+      --surface: #13162a;
+      --surface-light: #1b2038;
+      --primary: #8b7cff;
+      --secondary: #48d9e8;
+      --text: #f5f6ff;
+      --muted: #a5abc5;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11,13,26,.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 16px;
+      letter-spacing: -.4px;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--primary), #5a4ad6);
+      box-shadow: 0 5px 25px rgba(139,124,255,.3);
+      font-size: 21px;
+    }
+
+    .brand span:last-child {
+      display: block;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--secondary);
+    }
+
+    .hero {
+      position: relative;
+      padding: 100px 0 95px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 75% 30%, rgba(99,79,225,.2), transparent 40%),
+        radial-gradient(ellipse at 15% 80%, rgba(43,190,213,.1), transparent 35%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      margin-bottom: 24px;
+      border-radius: 999px;
+      border: 1px solid rgba(139,124,255,.35);
+      background: rgba(139,124,255,.1);
+      color: #c2baff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 12px var(--secondary);
+    }
+
+    h1 {
+      max-width: 680px;
+      font-size: clamp(42px, 5.5vw, 68px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      font-weight: 800;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #a89cff 5%, #67e4ec 95%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      margin-top: 25px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      min-height: 49px;
+      padding: 0 22px;
+      border-radius: 13px;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: linear-gradient(110deg, #8b7cff, #6c61e8);
+      color: white;
+      box-shadow: 0 8px 30px rgba(107,96,232,.23);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: var(--text);
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 23px;
+      color: #858ca9;
+      font-size: 12px;
+    }
+
+    .hero-note span {
+      color: var(--secondary);
+    }
+
+    .visual {
+      position: relative;
+      min-height: 440px;
+      display: grid;
+      place-items: center;
+    }
+
+    .glow {
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      background: rgba(113,91,255,.2);
+      filter: blur(65px);
+    }
+
+    .screen {
+      position: relative;
+      width: min(100%, 390px);
+      padding: 23px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 28px;
+      background: linear-gradient(150deg, #202643, #101426);
+      box-shadow: 0 35px 100px rgba(0,0,0,.45);
+      transform: rotate(2deg);
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .screen-title {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .screen-subtitle {
+      color: #929bbd;
+      font-size: 10px;
+      margin-top: 3px;
+    }
+
+    .live-pill {
+      padding: 5px 9px;
+      border-radius: 7px;
+      color: #ffb3c1;
+      background: rgba(255,85,120,.12);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .7px;
+    }
+
+    .screen-feature {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      margin-bottom: 11px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .screen-feature.active {
+      border-color: rgba(139,124,255,.55);
+      background: rgba(139,124,255,.12);
+    }
+
+    .feature-icon {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #7164dd, #42399a);
+      font-size: 21px;
+    }
+
+    .screen-feature:nth-of-type(3) .feature-icon {
+      background: linear-gradient(135deg, #269db5, #246b9d);
+    }
+
+    .screen-feature:nth-of-type(4) .feature-icon {
+      background: linear-gradient(135deg, #a45ebc, #7043a0);
+    }
+
+    .feature-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .feature-info strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .feature-info small {
+      display: block;
+      margin-top: 3px;
+      color: #929bbd;
+      font-size: 10px;
+    }
+
+    .feature-arrow {
+      color: #8f97b6;
+      font-size: 19px;
+    }
+
+    .screen-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding-top: 12px;
+      color: #8f97b6;
+      font-size: 9px;
+    }
+
+    .floating-card {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 16px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #1a2037;
+      box-shadow: 0 15px 40px rgba(0,0,0,.3);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .floating-card small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 400;
+    }
+
+    .floating-one {
+      top: 32px;
+      right: -5px;
+    }
+
+    .floating-two {
+      bottom: 35px;
+      left: -20px;
+    }
+
+    .section {
+      padding: 95px 0;
+    }
+
+    .section-alt {
+      background: #101225;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-heading {
+      max-width: 690px;
+      margin: 0 auto 52px;
+      text-align: center;
+    }
+
+    .section-label {
+      margin-bottom: 13px;
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.2;
+      letter-spacing: -1.6px;
+      font-weight: 800;
+    }
+
+    .section-heading p {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 17px;
+    }
+
+    .feature-card {
+      padding: 28px 25px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #171a30, #111425);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(139,124,255,.5);
+      transform: translateY(-4px);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 21px;
+      border-radius: 16px;
+      background: rgba(139,124,255,.14);
+      border: 1px solid rgba(139,124,255,.17);
+      font-size: 24px;
+    }
+
+    .feature-card:nth-child(3n+2) .card-icon {
+      background: rgba(72,217,232,.1);
+      border-color: rgba(72,217,232,.16);
+    }
+
+    .feature-card h3 {
+      margin-bottom: 11px;
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      padding: 28px;
+      border-radius: 19px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .step-number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      margin-bottom: 22px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--primary), #5e51ce);
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .compatibility {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .compat-card {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: linear-gradient(145deg, #181b32, #111425);
+    }
+
+    .compat-card h3 {
+      margin: 12px 0;
+      font-size: 20px;
+    }
+
+    .compat-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .compat-icon {
+      font-size: 31px;
+    }
+
+    .disclaimer {
+      padding: 26px;
+      border: 1px solid rgba(255,191,107,.23);
+      border-radius: 20px;
+      background: rgba(255,176,83,.045);
+    }
+
+    .disclaimer h3 {
+      margin-bottom: 15px;
+      color: #ffcb8e;
+      font-size: 17px;
+    }
+
+    .disclaimer p {
+      margin-bottom: 12px;
+      color: #b8b4c8;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .disclaimer p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cta {
+      padding: 80px 0;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(104,87,235,.19), transparent 65%);
+    }
+
+    .cta h2 {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta p {
+      max-width: 590px;
+      margin: 18px auto 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      background: #090b15;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy {
+      color: #777e9b;
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      color: #a5abc5;
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 75px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .hero-copy {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions,
+      .hero-note {
+        justify-content: center;
+      }
+
+      .visual {
+        min-height: 420px;
+      }
+
+      .screen {
+        max-width: 390px;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .brand {
+        font-size: 13px;
+      }
+
+      .brand-icon {
+        width: 38px;
+        height: 38px;
+      }
+
+      .nav-links {
+        gap: 13px;
+        font-size: 11px;
+      }
+
+      .nav-links a:nth-child(2),
+      .nav-links a:nth-child(3) {
+        display: none;
+      }
+
+      .hero {
+        padding: 60px 0 45px;
+      }
+
+      h1 {
+        font-size: 43px;
+        letter-spacing: -2px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .visual {
+        min-height: 375px;
+      }
+
+      .screen {
+        padding: 17px;
+        border-radius: 23px;
+      }
+
+      .floating-one {
+        right: -5px;
+        top: 8px;
+      }
+
+      .floating-two {
+        left: -5px;
+        bottom: 8px;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .features-grid,
+      .compatibility {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-card {
+        padding: 24px;
+      }
+
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="IPTV Player Home">
+        <span class="brand-icon">▶</span>
+        <span>
+          IPTV Player
+          <small>Smart Live TV</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#devices">Devices</a>
+        <a href="#disclaimer">Disclaimer</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Your content, your way
+          </div>
+
+          <h1>
+            Your IPTV.<br>
+            Your <span class="gradient-text">experience.</span>
+          </h1>
+
+          <p class="hero-description">
+            Meet IPTV Player: Smart Live TV — a powerful, easy-to-use
+            media player for your own IPTV playlists, online streams,
+            and local videos. Bring your content together in one
+            convenient place and enjoy flexible viewing on supported
+            Android devices.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#features">
+              Explore Features <span>→</span>
+            </a>
+            <a class="button button-secondary" href="#how-it-works">
+              How It Works
+            </a>
+          </div>
+
+          <div class="hero-note">
+            <span>✓</span>
+            Your playlists and media sources are provided by you.
+          </div>
+        </div>
+
+
+        <div class="visual" aria-label="Illustration of the IPTV Player interface">
+          <div class="glow"></div>
+
+          <div class="screen">
+            <div class="screen-top">
+              <div>
+                <div class="screen-title">My Media</div>
+                <div class="screen-subtitle">Your content in one place</div>
+              </div>
+              <div class="live-pill">● PLAYER</div>
+            </div>
+
+            <div class="screen-feature active">
+              <div class="feature-icon">📡</div>
+              <div class="feature-info">
+                <strong>M3U / M3U8 Playlists</strong>
+                <small>Import and manage your sources</small>
+              </div>
+              <div class="feature-arrow">›</div>
+            </div>
+
+            <div class="screen-feature">
+              <div class="feature-icon">🔗</div>
+              <div class="feature-info">
+                <strong>Xtream Codes</strong>
+                <small>Connect with your credentials</small>
+              </div>
+              <div class="feature-arrow">›</div>
+            </div>
+
+            <div class="screen-feature">
+              <div class="feature-icon">🎞️</div>
+              <div class="feature-info">
+                <strong>Local Media</strong>
+                <small>Play supported files on your device</small>
+              </div>
+              <div class="feature-arrow">›</div>
+            </div>
+
+            <div class="screen-feature">
+              <div class="feature-icon">📺</div>
+              <div class="feature-info">
+                <strong>Cast & Picture-in-Picture</strong>
+                <small>Flexible viewing options</small>
+              </div>
+              <div class="feature-arrow">›</div>
+            </div>
+
+            <div class="screen-footer">
+              <span>⌂ Home</span>
+              <span>☆ Favorites</span>
+              <span>⌕ Search</span>
+              <span>⚙ Settings</span>
+            </div>
+          </div>
+
+          <div class="floating-card floating-one">
+            <span>⚡</span>
+            <span>
+              Quick Search
+              <small>Find content with ease</small>
+            </span>
+          </div>
+
+          <div class="floating-card floating-two">
+            <span>☆</span>
+            <span>
+              Your Favorites
+              <small>Keep content close</small>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="section section-alt" id="features">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Powerful essentials</div>
+          <h2>Everything you need for a flexible viewing experience</h2>
+          <p>
+            Manage your own playlists, find your favorite channels,
+            and play compatible media with a collection of useful
+            features designed to keep things simple.
+          </p>
+        </div>
+
+        <div class="features-grid">
+
+          <article class="feature-card">
+            <div class="card-icon">📋</div>
+            <h3>M3U & M3U8 Playlists</h3>
+            <p>
+              Add multiple M3U or M3U8 playlists using your own
+              compatible URLs. Keep your sources organized in one
+              convenient player.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">🔗</div>
+            <h3>Xtream Codes Support</h3>
+            <p>
+              Connect using credentials from your IPTV provider
+              and browse supported content available through
+              your authorized service.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">🎞️</div>
+            <h3>Built-in Media Player</h3>
+            <p>
+              Play compatible online streams and supported local
+              media files from your device through an integrated
+              playback experience.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">📺</div>
+            <h3>Cast to a Bigger Screen</h3>
+            <p>
+              Enjoy supported media on a compatible larger display
+              using available casting functionality and supported
+              devices on your network.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">🖼️</div>
+            <h3>Picture-in-Picture</h3>
+            <p>
+              Keep supported video playing in a floating window
+              while you use other apps, where Picture-in-Picture
+              is available and enabled.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">🔍</div>
+            <h3>Fast Channel Search</h3>
+            <p>
+              Find channels and programs in your imported content
+              without scrolling through long playlists manually.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">⭐</div>
+            <h3>Favorites & Quick Access</h3>
+            <p>
+              Mark your preferred channels or programs as favorites
+              to make them easier to find whenever you return.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">📂</div>
+            <h3>Simple Playlist Management</h3>
+            <p>
+              Import your sources and organize compatible content
+              in a convenient interface designed for everyday use.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">✨</div>
+            <h3>Clean, Intuitive Interface</h3>
+            <p>
+              Navigate playlists, supported media, and player
+              controls through a straightforward interface built
+              around convenient access.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Get started</div>
+          <h2>Start watching in three simple steps</h2>
+          <p>
+            IPTV Player is a media player, not a content subscription
+            service. Bring your own authorized sources to get started.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Add Your Source</h3>
+            <p>
+              Import a compatible M3U/M3U8 playlist URL or connect
+              using the Xtream Codes details supplied by your
+              authorized service provider.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Browse Your Content</h3>
+            <p>
+              Explore the channels, movies, series, and other
+              media included in your source. Search for content
+              and save your favorites for quick access.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Play Your Media</h3>
+            <p>
+              Select compatible content to start playback.
+              Use supported player features, Picture-in-Picture,
+              or casting when available.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section section-alt" id="devices">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Flexible viewing</div>
+          <h2>Designed for your screen</h2>
+          <p>
+            Use the player on supported Android devices and enjoy
+            compatible content in the way that suits you.
+          </p>
+        </div>
+
+        <div class="compatibility">
+
+          <article class="compat-card">
+            <div class="compat-icon">📱</div>
+            <h3>Android Phones & Tablets</h3>
+            <p>
+              Manage playlists, search channels, watch compatible
+              streams, play local media, and use supported
+              Picture-in-Picture features on compatible devices.
+            </p>
+          </article>
+
+          <article class="compat-card">
+            <div class="compat-icon">📺</div>
+            <h3>Android TV & Larger Displays</h3>
+            <p>
+              Enjoy a viewing experience on supported Android TV
+              devices and compatible larger displays, depending
+              on device support and the features available in
+              your app version.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section" id="disclaimer">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-label">Important information</div>
+          <h2>Your content. Your responsibility.</h2>
+          <p>
+            Please read the following information before adding
+            or playing media through the application.
+          </p>
+        </div>
+
+        <div class="disclaimer">
+          <h3>⚠️ IPTV Player Disclaimer</h3>
+
+          <p>
+            <strong>Media player only.</strong> IPTV Player: Smart
+            Live TV is a media player application. We do not provide,
+            host, store, sell, distribute, or supply television
+            channels, IPTV playlists, movies, series, or other
+            third-party media content.
+          </p>
+
+          <p>
+            <strong>Bring your own sources.</strong> Users must
+            provide their own playlists, streaming URLs, Xtream
+            Codes credentials, or other compatible media sources.
+            We do not guarantee the availability, accuracy, legality,
+            or quality of third-party content or services.
+          </p>
+
+          <p>
+            <strong>Content authorization.</strong> You are solely
+            responsible for ensuring that you have the rights,
+            permissions, or authorization required to access and
+            play content added to the application.
+          </p>
+
+          <p>
+            <strong>No affiliation.</strong> IPTV Player: Smart Live
+            TV is not affiliated with, endorsed by, or associated
+            with any particular IPTV provider, broadcaster, or
+            third-party content owner unless expressly stated.
+            All third-party trademarks belong to their respective
+            owners.
+          </p>
+
+          <p>
+            <strong>Copyright compliance.</strong> We do not support
+            or encourage unauthorized streaming, reproduction, or
+            distribution of copyrighted material. Users must comply
+            with all applicable laws and regulations in their region.
+          </p>
+
+          <p>
+            <strong>Third-party services.</strong> External playlists,
+            streaming providers, and casting devices may be subject
+            to their own terms, restrictions, and availability.
+            We are not responsible for the operation or content
+            of third-party services.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <section class="cta">
+      <div class="container">
+        <div class="section-label">Simple. Flexible. Convenient.</div>
+
+        <h2>
+          Bring your media together with
+          <span class="gradient-text">IPTV Player</span>
+        </h2>
+
+        <p>
+          Import your own playlists, organize your favorite channels,
+          and enjoy compatible media with a player designed around
+          the way you watch.
+        </p>
+
+        <a class="button button-primary" href="#home">
+          Explore IPTV Player <span>↑</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-copy">
+        © <span id="year">2026</span> IPTV Player: Smart Live TV.
+        All rights reserved.
+      </div>
+
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#features">Features</a>
+        <a href="#disclaimer">Disclaimer</a>
+        <!-- Replace these with your actual published policy URLs. -->
+        <!-- <a href="YOUR_PRIVACY_POLICY_URL">Privacy Policy</a> -->
+        <!-- <a href="YOUR_TERMS_URL">Terms of Use</a> -->
+      </nav>
+
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
