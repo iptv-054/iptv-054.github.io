@@ -1,1 +1,883 @@
-Privacy
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101326">
+  <meta name="description" content="Privacy Policy for IPTV Player: Smart Live TV. Learn how playlist information, device permissions, and usage data are handled.">
+  <title>Privacy Policy | IPTV Player: Smart Live TV</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0d1a;
+      --surface: #13162a;
+      --primary: #8b7cff;
+      --secondary: #48d9e8;
+      --text: #f5f6ff;
+      --muted: #a5abc5;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 30px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(109,86,235,.15), transparent 35%),
+        radial-gradient(ellipse at 95% 30%, rgba(48,186,204,.08), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 52px 0;
+    }
+
+    .policy {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      background: rgba(19,22,42,.96);
+      box-shadow: 0 30px 100px rgba(0,0,0,.25);
+    }
+
+    .header {
+      position: relative;
+      padding: 44px 48px 38px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background:
+        radial-gradient(ellipse at 90% 10%, rgba(139,124,255,.2), transparent 40%),
+        linear-gradient(135deg, #191d38, #13162a);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 25px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .brand-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 13px;
+      background: linear-gradient(135deg, var(--primary), #5b4cd0);
+      box-shadow: 0 5px 25px rgba(139,124,255,.25);
+      font-size: 19px;
+    }
+
+    .brand small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--secondary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 6vw, 48px);
+      line-height: 1.15;
+      letter-spacing: -1.8px;
+      font-weight: 800;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg, #a89cff, #67e4ec);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .updated {
+      margin-top: 17px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .content {
+      padding: 38px 48px 45px;
+    }
+
+    .intro {
+      padding: 22px 24px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(139,124,255,.2);
+      border-radius: 17px;
+      background: rgba(139,124,255,.07);
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .toc {
+      margin: 0 0 38px;
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      background: rgba(255,255,255,.02);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+      font-size: 16px;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+      padding-left: 22px;
+      columns: 2;
+      column-gap: 35px;
+    }
+
+    .toc li {
+      break-inside: avoid;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+
+    h2 {
+      margin: 39px 0 14px;
+      font-size: 21px;
+      line-height: 1.4;
+      letter-spacing: -.45px;
+    }
+
+    h3 {
+      margin: 23px 0 9px;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 0 0 15px;
+      color: #b8bdd2;
+      font-size: 13px;
+    }
+
+    ul {
+      margin: 10px 0 20px;
+      padding-left: 23px;
+      color: #b8bdd2;
+    }
+
+    li {
+      margin-bottom: 8px;
+      padding-left: 3px;
+      font-size: 13px;
+    }
+
+    li::marker {
+      color: var(--primary);
+    }
+
+    strong {
+      color: #eef0ff;
+      font-weight: 700;
+    }
+
+    .notice {
+      padding: 18px 20px;
+      margin: 20px 0;
+      border-left: 3px solid var(--secondary);
+      border-radius: 0 12px 12px 0;
+      background: rgba(72,217,232,.06);
+    }
+
+    .notice p {
+      margin-bottom: 0;
+    }
+
+    .contact {
+      padding: 23px;
+      margin-top: 20px;
+      border: 1px solid rgba(139,124,255,.25);
+      border-radius: 17px;
+      background: rgba(139,124,255,.07);
+    }
+
+    .contact p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      padding: 24px 15px;
+      border-top: 1px solid var(--border);
+      color: #777e9b;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    footer strong {
+      color: #b6aaff;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 18px 0;
+      }
+
+      .policy {
+        border-radius: 19px;
+      }
+
+      .header {
+        padding: 30px 23px;
+      }
+
+      .content {
+        padding: 25px 23px 32px;
+      }
+
+      .toc {
+        padding: 18px;
+      }
+
+      .toc ol {
+        columns: 1;
+      }
+
+      h2 {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <article class="policy">
+
+      <header class="header">
+        <a class="brand" href="#top" aria-label="IPTV Player home">
+          <span class="brand-icon">▶</span>
+          <span>
+            IPTV Player
+            <small>Smart Live TV</small>
+          </span>
+        </a>
+
+        <div class="eyebrow">Privacy & Transparency</div>
+
+        <h1 id="top">
+          Privacy <span class="gradient">Policy</span>
+        </h1>
+
+        <p class="updated">
+          Effective Date: October 21, 2026
+        </p>
+      </header>
+
+
+      <div class="content">
+
+        <div class="intro">
+          <p>
+            Welcome to <strong>IPTV Player: Smart Live TV</strong>
+            ("we", "our", "us", or the "App").
+          </p>
+
+          <p>
+            This Privacy Policy explains how information may be
+            collected, used, stored, and shared when you use our
+            IPTV player application on supported devices.
+          </p>
+
+          <p>
+            The App is a media player that allows you to add your own
+            M3U/M3U8 playlists, connect to compatible Xtream Codes
+            services, play supported local media, and use available
+            playback and casting features. We do not provide or host
+            the television channels, playlists, or other media you
+            choose to access.
+          </p>
+        </div>
+
+
+        <nav class="toc" aria-label="Table of contents">
+          <h2>Contents</h2>
+          <ol>
+            <li><a href="#information">Information We Handle</a></li>
+            <li><a href="#credentials">Playlist and Account Details</a></li>
+            <li><a href="#local">Local Storage</a></li>
+            <li><a href="#usage">How Information Is Used</a></li>
+            <li><a href="#sharing">Information Sharing</a></li>
+            <li><a href="#third-party">Third-Party Services</a></li>
+            <li><a href="#permissions">Permissions and Device Features</a></li>
+            <li><a href="#security">Data Security</a></li>
+            <li><a href="#retention">Data Retention and Deletion</a></li>
+            <li><a href="#children">Children's Privacy</a></li>
+            <li><a href="#rights">Your Choices and Rights</a></li>
+            <li><a href="#international">International Data Transfers</a></li>
+            <li><a href="#changes">Changes to This Policy</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ol>
+        </nav>
+
+
+        <section id="information">
+          <h2>1. Information We Handle</h2>
+
+          <p>
+            The information involved in using the App depends on
+            the features you choose and the sources you configure.
+            Categories may include the following:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Playlist information:</strong> playlist names,
+              playlist URLs, M3U/M3U8 source addresses, and related
+              settings that you enter.
+            </li>
+
+            <li>
+              <strong>IPTV connection details:</strong> host URLs,
+              usernames, passwords, and other credentials you
+              provide to connect to compatible Xtream Codes services.
+            </li>
+
+            <li>
+              <strong>App preferences:</strong> settings, favorites,
+              playlist organization, and an optional passcode used
+              to protect access to supported playlist features.
+            </li>
+
+            <li>
+              <strong>Local media information:</strong> files or
+              media that you choose to access through the App,
+              subject to the permissions granted on your device.
+            </li>
+
+            <li>
+              <strong>Technical and diagnostic information:</strong>
+              depending on the services integrated into the
+              published version, information such as app version,
+              device model, operating system version, crash reports,
+              performance data, and diagnostic events may be processed.
+            </li>
+
+            <li>
+              <strong>Advertising or analytics information:</strong>
+              if advertising or analytics services are integrated,
+              their providers may process identifiers, app interaction
+              events, and related technical information as described
+              in their respective privacy policies and your available
+              privacy settings.
+            </li>
+          </ul>
+
+          <p>
+            We do not intend to collect information that is unrelated
+            to providing, maintaining, securing, or improving the
+            App's functionality.
+          </p>
+        </section>
+
+
+        <section id="credentials">
+          <h2>2. Playlist and Account Details</h2>
+
+          <p>
+            The App allows you to configure your own IPTV sources.
+            Depending on the connection method, you may enter:
+          </p>
+
+          <ul>
+            <li>A playlist name and M3U/M3U8 URL.</li>
+            <li>A service host or server URL.</li>
+            <li>A username and password for Xtream Codes access.</li>
+            <li>Other connection information required by your source.</li>
+          </ul>
+
+          <p>
+            These details are used to configure your playlist and
+            request supported content or account information from
+            the server you specify.
+          </p>
+
+          <p>
+            When you connect to a third-party IPTV server, that
+            server may receive connection information, including
+            your IP address and the requests necessary to provide
+            the service. Its handling of information is governed
+            by its own privacy practices.
+          </p>
+
+          <p>
+            We do not operate or control third-party IPTV providers
+            and cannot determine how those providers independently
+            collect or process information.
+          </p>
+
+          <div class="notice">
+            <p>
+              <strong>Important:</strong> Only add sources and
+              credentials from providers you trust and are authorized
+              to use. Do not share your account details with others.
+            </p>
+          </div>
+        </section>
+
+
+        <section id="local">
+          <h2>3. Local Storage</h2>
+
+          <p>
+            The App may store playlist configurations, connection
+            settings, favorites, preferences, and related information
+            locally on your device to support convenient use between
+            sessions.
+          </p>
+
+          <p>
+            If you enable an optional in-app passcode, it is intended
+            to provide an additional layer of protection for supported
+            playlist access within the App. This feature should not
+            be considered a substitute for your device's screen lock
+            or other security controls.
+          </p>
+
+          <p>
+            Local storage behavior depends on the app version and
+            device environment. Unless a feature explicitly states
+            otherwise, you should not assume that your playlists
+            or preferences are backed up or synchronized across devices.
+          </p>
+
+          <p>
+            Uninstalling the App may remove locally stored information.
+            Some operating-system backups or other device-level
+            mechanisms may behave differently depending on your settings.
+          </p>
+        </section>
+
+
+        <section id="usage">
+          <h2>4. How Information Is Used</h2>
+
+          <p>Information may be used for the following purposes:</p>
+
+          <ul>
+            <li>
+              <strong>Providing core functionality:</strong>
+              importing playlists, connecting to compatible IPTV
+              services, browsing available categories, and playing
+              supported media.
+            </li>
+
+            <li>
+              <strong>Managing preferences:</strong> saving favorites,
+              playlist settings, and other supported configurations.
+            </li>
+
+            <li>
+              <strong>Supporting playback:</strong> processing requests
+              needed for streaming, local media playback, Picture-in-
+              Picture, or supported casting functionality.
+            </li>
+
+            <li>
+              <strong>Maintaining and improving the App:</strong>
+              diagnosing crashes, resolving technical issues, and
+              improving reliability and performance where applicable.
+            </li>
+
+            <li>
+              <strong>Security and abuse prevention:</strong>
+              protecting the App, investigating technical misuse,
+              and maintaining service integrity.
+            </li>
+
+            <li>
+              <strong>Advertising and measurement:</strong> where
+              applicable, supporting ads, measuring ad performance,
+              and understanding app usage through integrated services.
+            </li>
+
+            <li>
+              <strong>Legal compliance:</strong> responding to valid
+              legal obligations and protecting applicable rights.
+            </li>
+          </ul>
+
+          <p>
+            We do not use your IPTV credentials to provide IPTV
+            subscriptions or sell access to television channels.
+          </p>
+        </section>
+
+
+        <section id="sharing">
+          <h2>5. Information Sharing</h2>
+
+          <p>
+            We do not sell your personal information as part of the
+            App's core functionality. Information may be shared or
+            processed in the following circumstances, where applicable:
+          </p>
+
+          <ul>
+            <li>
+              <strong>IPTV providers you select:</strong> your device
+              connects to the server or playlist URL you configure.
+              That provider may process the connection information
+              required to deliver its service.
+            </li>
+
+            <li>
+              <strong>Service providers:</strong> technical providers
+              may process limited information to support hosting,
+              diagnostics, analytics, advertising, or other services
+              integrated into the App.
+            </li>
+
+            <li>
+              <strong>Legal requirements:</strong> information may
+              be disclosed when required by law or in response to
+              valid legal processes.
+            </li>
+
+            <li>
+              <strong>Protection of rights:</strong> information may
+              be processed or disclosed when reasonably necessary
+              to investigate fraud, address security incidents,
+              or protect users and other parties.
+            </li>
+
+            <li>
+              <strong>Business changes:</strong> information may be
+              transferred as part of a merger, acquisition, or
+              transfer of relevant assets, subject to applicable law.
+            </li>
+          </ul>
+
+          <p>
+            We do not independently publish your playlists or make
+            your IPTV credentials publicly available.
+          </p>
+        </section>
+
+
+        <section id="third-party">
+          <h2>6. Third-Party Services</h2>
+
+          <p>
+            The App may use third-party services to support certain
+            features. Depending on the version distributed, these
+            may include services for advertising, analytics, crash
+            reporting, or app distribution.
+          </p>
+
+          <p>
+            When such services are integrated and active, their
+            providers may process information under their own
+            privacy policies. Their data practices, retention
+            periods, and security measures are not controlled
+            entirely by us.
+          </p>
+
+          <p>
+            The App may also connect to third-party IPTV servers
+            and casting-compatible devices at your request. These
+            connections are distinct from any analytics or
+            advertising services.
+          </p>
+
+          <p>
+            Please review the privacy policies of relevant third-party
+            services and IPTV providers before using them.
+          </p>
+        </section>
+
+
+        <section id="permissions">
+          <h2>7. Permissions and Device Features</h2>
+
+          <p>
+            Certain Android permissions or system features may be
+            required for specific functions. The permissions requested
+            depend on the features available in your installed version.
+          </p>
+
+          <h3>Network Access</h3>
+          <p>
+            Network access is needed to retrieve online playlists,
+            connect to compatible IPTV services, and stream content
+            from sources you provide.
+          </p>
+
+          <h3>Local Media Access</h3>
+          <p>
+            The App may use Android's media or file-selection
+            mechanisms to let you choose supported local files.
+            Access is limited by the permissions and selection
+            mechanisms provided by your device.
+          </p>
+
+          <h3>Picture-in-Picture</h3>
+          <p>
+            If supported and enabled, Picture-in-Picture allows
+            compatible video playback to continue in a floating
+            window. You can manage this feature through the
+            relevant device settings.
+          </p>
+
+          <h3>Casting and External Displays</h3>
+          <p>
+            Casting or connecting to external devices may involve
+            local network communication or the capabilities of
+            compatible third-party services. Information exchanged
+            with the receiving device depends on the casting
+            method and the content you choose to play.
+          </p>
+
+          <p>
+            You can manage available permissions through Android
+            settings. Restricting a permission may prevent the
+            related feature from working.
+          </p>
+        </section>
+
+
+        <section id="security">
+          <h2>8. Data Security</h2>
+
+          <p>
+            We take reasonable measures appropriate to the App's
+            functionality to help protect information against
+            unauthorized access, loss, misuse, or alteration.
+          </p>
+
+          <p>
+            However, no method of electronic storage, transmission,
+            or internet communication can be guaranteed to be
+            completely secure.
+          </p>
+
+          <p>
+            You are responsible for protecting your device,
+            maintaining the confidentiality of your IPTV credentials,
+            and choosing trustworthy playlist providers.
+          </p>
+
+          <p>
+            Where supported by the relevant services, encrypted
+            connections may be used to communicate with remote
+            servers. The security of a connection also depends
+            on the server and URL you choose.
+          </p>
+        </section>
+
+
+        <section id="retention">
+          <h2>9. Data Retention and Deletion</h2>
+
+          <p>
+            Information stored locally may remain on your device
+            until you remove it, clear the relevant app data,
+            or uninstall the App, subject to operating-system
+            behavior and backup settings.
+          </p>
+
+          <p>
+            Information processed by third-party IPTV providers,
+            advertising partners, analytics providers, or other
+            service providers is retained according to their
+            respective policies and applicable requirements.
+          </p>
+
+          <p>
+            You can remove playlists or related settings through
+            available in-app controls. You may also clear the
+            App's data or uninstall it through Android settings.
+            These actions may not delete information already
+            received by third-party providers.
+          </p>
+
+          <p>
+            Where we control personal information held outside
+            your device, you may contact us to request access,
+            correction, or deletion, subject to applicable law
+            and any legitimate retention obligations.
+          </p>
+        </section>
+
+
+        <section id="children">
+          <h2>10. Children's Privacy</h2>
+
+          <p>
+            The App is a general-purpose media player and is not
+            specifically designed to collect personal information
+            from children.
+          </p>
+
+          <p>
+            We do not knowingly collect personal information from
+            children in violation of applicable privacy laws.
+            If you believe a child has provided personal information
+            to us inappropriately, please contact us so we can
+            review the matter and take appropriate action.
+          </p>
+
+          <p>
+            Parents and guardians should supervise the playlists,
+            external services, and content sources accessed by
+            children using the App.
+          </p>
+        </section>
+
+
+        <section id="rights">
+          <h2>11. Your Choices and Rights</h2>
+
+          <p>
+            Depending on your location and applicable law, you may
+            have rights regarding your personal information,
+            including the right to request access, correction,
+            deletion, restriction, or other available remedies.
+          </p>
+
+          <p>You can also take practical steps to manage your data:</p>
+
+          <ul>
+            <li>Remove playlists you no longer use.</li>
+            <li>Update or remove saved connection details.</li>
+            <li>Revoke optional device permissions through Android settings.</li>
+            <li>Manage advertising preferences where supported by your device or services.</li>
+            <li>Clear app data or uninstall the App.</li>
+            <li>Contact us with a privacy-related request.</li>
+          </ul>
+
+          <p>
+            We will consider privacy requests in accordance with
+            applicable laws. Some information may be retained
+            where required or permitted by law, or where it is
+            held independently by third-party providers.
+          </p>
+        </section>
+
+
+        <section id="international">
+          <h2>12. International Data Transfers</h2>
+
+          <p>
+            If the App uses third-party service providers or connects
+            to IPTV servers located in other countries, certain
+            information may be processed outside your country
+            of residence.
+          </p>
+
+          <p>
+            Where applicable, appropriate safeguards will be
+            considered for international transfers as required
+            by relevant privacy laws. The actual locations and
+            safeguards depend on the services used.
+          </p>
+        </section>
+
+
+        <section id="changes">
+          <h2>13. Changes to This Privacy Policy</h2>
+
+          <p>
+            We may update this Privacy Policy to reflect changes
+            in the App, its features, applicable law, or our
+            information-handling practices.
+          </p>
+
+          <p>
+            When changes are made, we will update the effective
+            date shown at the top of this page. Where required
+            by applicable law, we will provide additional notice
+            or obtain consent for material changes.
+          </p>
+
+          <p>
+            We encourage you to review this page periodically
+            to remain informed about our privacy practices.
+          </p>
+        </section>
+
+
+        <section id="contact">
+          <h2>14. Contact Us</h2>
+
+          <p>
+            If you have questions about this Privacy Policy,
+            the information handled by the App, or a privacy
+            request, please contact us using the details below.
+          </p>
+
+          <div class="contact">
+            <p><strong>App:</strong> IPTV Player: Smart Live TV</p>
+            <p>
+              <strong>Email:</strong>
+              <a href="mailto:demircimamo@gmail.com">
+                demircimamo@gmail.com
+              </a>
+            </p>
+          </div>
+        </section>
+
+      </div>
+
+      <footer>
+        © <span id="year">2026</span>
+        <strong>IPTV Player: Smart Live TV</strong>.
+        All rights reserved.
+      </footer>
+
+    </article>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
